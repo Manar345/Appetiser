@@ -7,11 +7,9 @@ const successTab = document.querySelectorAll(".success__tabs__img");
 // Add click event listeners to the tabs
 successTab.forEach((tab, tabIndex) => {
   tab.addEventListener("click", () => {
-    // Remove active class from the currently active tab and content
     tabsContainer.querySelector(".active").classList.remove("active");
     successContent.forEach((contentEl) => contentEl.classList.remove("active"));
 
-    // Add active class to the clicked tab and corresponding content
     tab.classList.add("active");
     successContent[tabIndex].classList.add("active");
   });
@@ -30,17 +28,14 @@ const autoplay = () => {
   // Move to the next tab index or loop back to the start
   tabIndex = tabIndex < successTab.length - 1 ? tabIndex + 1 : 0;
 
-  // Remove active class from all tabs and content
   tabsContainer.querySelector(".active").classList.remove("active");
   successContent.forEach((contentEl) => contentEl.classList.remove("active"));
 
-  // Add active class to the new tab and corresponding content
   successTab[tabIndex].classList.add("active");
   successContent[tabIndex].classList.add("active");
 };
 
-// Start the autoplay with a 3-second interval
-let successInterval = setInterval(autoplay, 3000);
+let successInterval = setInterval(autoplay, 2000);
 
 // Stop the autoplay when hovering over the success section
 successSection.addEventListener("mouseenter", () => {
@@ -49,5 +44,22 @@ successSection.addEventListener("mouseenter", () => {
 
 // Restart the autoplay when the mouse leaves the success section
 successSection.addEventListener("mouseleave", () => {
-  successInterval = setInterval(autoplay, 3000);
+  successInterval = setInterval(autoplay, 2000);
 });
+// =======================================================================
+const counter = document.querySelector(".counter");
+
+counter.innerText = "0";
+const updateCounter = () => {
+  const target = +counter.getAttribute("data-target");
+  const c = +counter.innerText;
+  const increment = target / 500;
+
+  if (c < target) {
+    counter.innerText = `${Math.ceil(c + increment)}`;
+    setTimeout(updateCounter, 10);
+  } else {
+    counter.innerText = target;
+  }
+};
+updateCounter();
