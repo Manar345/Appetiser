@@ -33,6 +33,8 @@ body {
   align-items: center;
   gap: 0.5rem;
   margin-block: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 .grid-section {
   display: grid;
@@ -336,8 +338,181 @@ p {
   font-weight: 700;
   line-height: 0.75;
 }
+/* ================CTA form============================ */
+.ctaForm {
+  background: linear-gradient(
+    108.29deg,
+    #1d5cbb -34.7%,
+    #428de6 19.94%,
+    #2d75dd 66.5%,
+    #7744e2 127.96%
+  );
+  color: #fff;
+}
+.ctaForm__img {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.ctaForm__img img {
+  width: 100%;
+  height: calc(100% + 4rem);
+}
+.ctaForm__text__p {
+  margin-block: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+.ctaForm__text__input form {
+  margin-block: 1rem;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.ctaForm__text__input input,
+.ctaForm__text__input button {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+.ctaForm__text__input input {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.ctaForm__text__input input::placeholder {
+  color: #fff;
+}
+.ctaForm__text__input input:focus {
+  outline: none;
+}
+.ctaForm__text__input button {
+  color: #2d75dd;
+}
+/* ================reviews============================ */
+.reviews__heading {
+  margin-block: 3rem;
+}
+.reviews__content__card {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 6px 36px rgba(42, 48, 50, 0.15);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+.reviews__content__card__title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.reviews__content__card__title__img {
+  width: 3rem;
+}
+.reviews__content__card__title__img img {
+  width: 100%;
+  object-fit: cover;
+}
+.reviews__content__card__text {
+  color: #333;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+.reviews__content__card__text b {
+  color: #000;
+}
+.reviews__content__card__signature {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+/* ================gallery============================ */
+.gallery {
+  width: 100%;
+  height: 60svh;
+  margin-block: 3rem;
+  background-image: url(./assets/sydney-polaroids.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* ================accordion============================ */
+.FAQS {
+  display: grid;
+  place-items: center;
+}
+.accordion {
+  color: #000;
+  overflow: hidden;
+  width: 70%;
+  margin-block: 1rem;
+}
+.accordion__tab {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #aaa;
+}
+.accordion__tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.accordion__tab__content {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.35s;
+  margin-bottom: 1rem;
+  transition: height 0.3s;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  -o-transition: height 0.3s;
+}
+.accordion__tab__content p {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1rem;
+}
+.accordion__tab__content ul {
+  margin-inline-start: 2rem;
+  list-style: disc;
+}
+.accordion__tab input:checked ~ .accordion__tab__content {
+  height: auto;
+}
+.accordion__tab__label {
+  padding: 1rem 0.5rem;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+}
+.accordion__tab__label::after {
+  content: "+";
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: all 0.35s;
+}
+.accordion__tab input:checked ~ .accordion__tab__label::after {
+  content: "-";
+}
 
 /* ================MEDIA QUERIES===================== */
+
 @media (max-width: 992px) {
   .success__content__card.active {
     grid-template-columns: 1fr;
@@ -350,6 +525,15 @@ p {
   }
   .budges__imgs__img {
     width: 30%;
+  }
+  .ctaForm {
+    padding: 1rem 0;
+  }
+  .ctaForm__container {
+    grid-template-columns: 1fr;
+  }
+  .ctaForm__img {
+    display: none;
   }
 }
 @media (max-width: 768px) {
@@ -411,6 +595,22 @@ p {
   .standards__feature__img {
     order: 2;
   }
+  .ctaForm__text__input form {
+    width: 100%;
+  }
+  .ctaForm__text__input input,
+  .ctaForm__text__input button {
+    font-size: 1rem;
+    padding: 1rem;
+    font-weight: 600;
+  }
+  .gallery {
+    background-image: url(./assets/sydney-polaroids-mobile.png);
+    background-size: contain;
+  }
+  .accordion {
+    width: 100%;
+  }
 }
 @media (max-width: 450px) {
   .brands__imgs__icon {
@@ -424,5 +624,9 @@ p {
   }
   .features__heading__title {
     font-size: 2rem;
+  }
+  .ctaForm__text__title img {
+    width: 100%;
+    object-fit: cover;
   }
 }
